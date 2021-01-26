@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
+var ghPages = require('gulp-gh-pages');
 
 sass.compiler = require('node-sass');
 
@@ -52,7 +53,12 @@ function browser() {
 				},
 				port: 8080,
     });
-};
+}
+
+function deploy(){
+	return gulp.src('./dist/**/*')
+		.pipe(ghPages());
+}
 
 function watch(){
 	gulp.watch('./app/**/*.html', gulp.series(copyHTML))
@@ -61,6 +67,8 @@ function watch(){
 
 // 同步編譯 終端機要輸入 gulp 編譯
 exports.default = gulp.series(copyHTML, scss, gulp.parallel(browser, watch));
+exports.build = gulp.series(copyHTML, scss);
+exports.deploy = deploy;
 // exports.scss = gulp.series(scss);
 
 // 終端機要輸入 gulp copy 編譯
