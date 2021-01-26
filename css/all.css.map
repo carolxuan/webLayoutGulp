@@ -1,0 +1,1 @@
+{"version":3,"file":"all.css","sources":["all.scss"],"sourcesContent":["h1 {\n  color: blue;\n  font-size: 36px;\n}\n"],"names":[],"mappings":"AAAA,AAAA,EAAE,CAAC;EACD,KAAK,EAAE,IAAI;EACX,SAAS,EAAE,IAAI,GAChB"}
